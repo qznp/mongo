@@ -277,8 +277,40 @@ db.createUser({
 6、超级用户角色：root
 7、内部角色：\_\_system
 查找用户信息：
-`dbd .system.users.find()`
+`db.system.users.find()`
 删除用户：
 `db.system.users.remove({user:"jspang"})`
 建权：验证用户的用户名密码是否正确
 `db.auth("jspang","123456")`
+建权登录：
+`mongod --auth`
+
+`mongo -u yanyan -p 123456 127.0.0.1:27017/admin`
+
+<!-- 数据备份 -->
+
+```
+mongodump
+    --host 127.0.0.1
+    --port 27017
+    --out c:/Desktop
+    --collection myCollections
+    --db test
+    --username yanyan
+    --password 123456
+```
+
+`mongodump --host 127.0.0.1 --port 27017 --out D:/databack/`
+
+<!-- 数据恢复 -->
+
+```
+mongorestore
+    --host 127.0.0.1
+    --port 27017
+    --username username
+    --password password
+    <path to the backup>
+```
+
+`mongorestore --host 127.0.0.1 --port 27017 D:/databack/`
